@@ -190,10 +190,12 @@ function library:Window(name)
         Label.ZIndex = 2 + zindex
 
         if type(color) == "boolean" and color then
-            while wait() do
-                local hue = tick() % 5 / 5
-                Label.TextColor3 = Color3.fromHSV(hue, 1, 1)
-            end
+	    spawn(function()
+                while wait() do
+                    local hue = tick() % 5 / 5
+                    Label.TextColor3 = Color3.fromHSV(hue, 1, 1)
+                end
+	    end)
         else
             Label.TextColor3 = color
         end

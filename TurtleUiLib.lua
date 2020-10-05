@@ -113,7 +113,7 @@ function library:Window(name)
     HeaderText.Text = name
     HeaderText.TextColor3 = Color3.fromRGB(47, 54, 64)
     HeaderText.TextSize = 17.000
-    
+
     local Minimise = Instance.new("TextButton")
     local Window = Instance.new("Frame")
     Minimise.Name = "Minimise"
@@ -539,6 +539,26 @@ function library:Window(name)
             Button_2.MouseButton1Up:Connect(function()
                 callback(name)
             end)
+        end
+        function dropFunctions:Remove(name)
+            local foundIt
+            for i, v in pairs(DropdownFrame:GetChildren()) do
+                if foundIt then
+                    canvasSize = canvasSize - 27
+                    v.Position = UDim2.new(0, 6, 0, v.Position.Y.Offset - 27)
+                    DropdownFrame.CanvasSize = UDim2.new(0, 182, 0, canvasSize + 1)
+                end
+                if v.Text == name then
+                    foundIt = true
+                    v:Destroy()
+                    if #DropdownFrame:GetChildren() < 8 then
+                        DropdownFrame.Size = UDim2.new(0, 182, 0, DropdownFrame.Size.Y.Offset - 27)
+                    end
+                end
+            end
+            if not foundIt then
+                warn("The button you tried to remove didn't exist!")
+            end
         end
 
         for i,v in pairs(buttons) do

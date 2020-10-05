@@ -1,7 +1,4 @@
---[[
-Loadstring:
-loadstring(game:HttpGet("https://pastebin.com/raw/k8nfrFKx"))()
-]]--
+-- Turtle UI Lib, all credits to Intrer#0421
 
 local library = {}
 local windowCount = 0

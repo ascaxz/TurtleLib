@@ -1,5 +1,3 @@
--- Turtle UI Lib, all credits to Intrer#0421
-
 local library = {}
 local windowCount = 0
 local sizes = {}
@@ -188,9 +186,17 @@ function library:Window(name)
         Label.Size = UDim2.new(0, 206, 0, 29)
         Label.Font = Enum.Font.SourceSans
         Label.Text = text or "Label"
-        Label.TextColor3 = color
         Label.TextSize = 16.000
         Label.ZIndex = 2 + zindex
+
+        if type(color) == "boolean" and color then
+            while wait() do
+                local hue = tick() % 5 / 5
+                Label.TextColor3 = Color3.fromHSV(hue, 1, 1)
+            end
+        else
+            Label.TextColor3 = color
+        end
         pastSliders[winCount] = false
     end
     function functions:Toggle(text, on, callback)

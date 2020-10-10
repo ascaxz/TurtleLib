@@ -74,6 +74,25 @@ protect_gui(TurtleUiLib)
 
 local xOffset = 20
 
+local uis = game:GetService("UserInputService")
+
+local keybindConnection
+
+function library:Destroy()
+    TurtleUiLib:Destroy()
+    keybindConnection:Disconnect()
+end
+function library:Keybind(key)
+    if keybindConnection then keybindConnection:Disconnect() end
+    local key = key:upper()
+
+    keybindConnection = uis.InputBegan:Connect(function(input, gp)
+        if not gp and input.KeyCode == Enum.KeyCode[key] then
+            TurtleUiLib.Enabled = not TurtleUiLib.Enabled
+        end
+    end)
+end
+
 function library:Window(name) 
     windowCount = windowCount + 1
     local winCount = windowCount

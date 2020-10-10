@@ -7,6 +7,9 @@ local pastSliders = {}
 local dropdowns = {}
 local dropdownSizes = {}
 local destroyed
+
+local colorPickers = {}
+
 if game.CoreGui:FindFirstChild('TurtleUiLib') then
     game.CoreGui:FindFirstChild('TurtleUiLib'):Destroy()
     destroyed = true
@@ -697,6 +700,9 @@ function library:Window(name)
         ClosePicker.TextSize = 18.000
         ClosePicker.ZIndex = 4 + zindex
         ClosePicker.MouseButton1Down:Connect(function()
+	    for i, v in pairs(colorPickers) do
+                v.Visible = false
+            end
             ColorPickerFrame.Visible = not ColorPickerFrame.Visible
         end)
 
@@ -878,6 +884,8 @@ function library:Window(name)
         Title.TextSize = 16.000
         Title.TextXAlignment = Enum.TextXAlignment.Left
         Title.ZIndex = 4 + zindex
+
+	table.insert(colorPickers, ColorPickerFrame)
     end
 
     return functions

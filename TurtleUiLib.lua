@@ -889,9 +889,8 @@ function library:Window(name)
 
 	local colorFuncs = {}
     function colorFuncs:UpdateColorPicker(color)
-	    if typeof(color) == "Color3" then
+        if typeof(color) == "Color3" then
             if con then 
-                con = false
 	            ToggleFiller_2.Visible = false
 		    end
 	        ColorPicker.BackgroundColor3 = color

@@ -885,11 +885,12 @@ function library:Window(name)
         Title.TextXAlignment = Enum.TextXAlignment.Left
         Title.ZIndex = 4 + zindex
 
-	table.insert(colorPickers, ColorPickerFrame)
+	    table.insert(colorPickers, ColorPickerFrame)
 
-	local colorFuncs = {}
-    function colorFuncs:UpdateColorPicker(color)
+	    local colorFuncs = {}
+        function colorFuncs:UpdateColorPicker(color)
         if type(color) == "userdata" then
+            print(con, color)
             if con then 
                 ToggleFiller_2.Visible = false
 		    end
@@ -906,8 +907,8 @@ function library:Window(name)
                         con:Disconnect()
                     end
                 end)
+	        end
 	    end
-	end
 	return colorFuncs
     end
 

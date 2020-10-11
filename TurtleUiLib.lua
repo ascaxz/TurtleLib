@@ -890,6 +890,7 @@ function library:Window(name)
 	local colorFuncs = {}
     function colorFuncs:UpdateColorPicker(color)
         if typeof(color) == "Color3" then
+            print(con)
             if con then 
                 ToggleFiller_2.Visible = false
                 print(ToggleFiller_2.Visible)

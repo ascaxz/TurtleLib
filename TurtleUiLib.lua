@@ -752,11 +752,11 @@ function library:Window(name)
                 end)
             end
         end)
-
+        
+	local con
         if default and type(default) == "boolean" then
             ToggleFiller_2.Visible = true
             if ToggleFiller_2.Visible then
-                local con
                 con = stepped:Connect(function()
                     if ToggleFiller_2.Visible then
                         local hue2 = tick() % 5 / 5
@@ -886,6 +886,32 @@ function library:Window(name)
         Title.ZIndex = 4 + zindex
 
 	table.insert(colorPickers, ColorPickerFrame)
+
+	local colorFuncs = {}
+    function colorFuncs:UpdateColorPicker(color)
+        print(color, type(color), not con)
+	    if typeof(color) == "Color3" then
+            if con then 
+                con:Disconnect() 
+                con = false
+	            ToggleFiller_2.Visible = false
+		    end
+	        ColorPicker.BackgroundColor3 = color
+        elseif color and type(color) == "boolean" and not con then
+	        ToggleFiller_2.Visible = true
+                con = stepped:Connect(function()
+                    if ToggleFiller_2.Visible then
+                        local hue2 = tick() % 5 / 5
+                        color3 = Color3.fromHSV(hue2, 1, 1)
+                        callback(color3)
+                        ColorPicker.BackgroundColor3 = color3
+                    else
+                        con:Disconnect()
+                    end
+                end)
+	    end
+	end
+	return colorFuncs
     end
 
     return functions

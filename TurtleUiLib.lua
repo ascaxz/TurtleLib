@@ -889,9 +889,9 @@ function library:Window(name)
 
 	local colorFuncs = {}
     function colorFuncs:UpdateColorPicker(color)
+        print(color, type(color), not con)
 	    if typeof(color) == "Color3" then
             if con then 
-                con:Disconnect() 
                 con = false
 	            ToggleFiller_2.Visible = false
 		    end

@@ -735,11 +735,11 @@ function library:Window(name)
         local sat = 1
         local brightness = 1
         
+        local con
 
         ToggleRGB.MouseButton1Down:Connect(function()
             ToggleFiller_2.Visible = not ToggleFiller_2.Visible
             if ToggleFiller_2.Visible then
-                local con
                 con = stepped:Connect(function()
                     if ToggleFiller_2.Visible then
                         local hue2 = tick() % 5 / 5
@@ -753,7 +753,6 @@ function library:Window(name)
             end
         end)
         
-	local con
         if default and type(default) == "boolean" then
             ToggleFiller_2.Visible = true
             if ToggleFiller_2.Visible then
@@ -890,7 +889,6 @@ function library:Window(name)
 	    local colorFuncs = {}
         function colorFuncs:UpdateColorPicker(color)
         if type(color) == "userdata" then
-            print(con, color)
             ToggleFiller_2.Visible = false
 	        ColorPicker.BackgroundColor3 = color
         elseif color and type(color) == "boolean" and not con then

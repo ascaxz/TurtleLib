@@ -891,7 +891,8 @@ function library:Window(name)
     function colorFuncs:UpdateColorPicker(color)
         if typeof(color) == "Color3" then
             if con then 
-	            ToggleFiller_2.Visible = false
+                ToggleFiller_2.Visible = false
+                print(ToggleFiller_2.Visible)
 		    end
 	        ColorPicker.BackgroundColor3 = color
         elseif color and type(color) == "boolean" and not con then

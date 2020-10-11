@@ -744,7 +744,7 @@ function library:Window(name)
                     if ToggleFiller_2.Visible then
                         local hue2 = tick() % 5 / 5
                         color3 = Color3.fromHSV(hue2, 1, 1)
-                        callback(color3)
+                        callback(color3, true)
                         ColorPicker.BackgroundColor3 = color3
                     else
                         con:Disconnect()

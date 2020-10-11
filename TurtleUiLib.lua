@@ -83,7 +83,9 @@ local keybindConnection
 
 function library:Destroy()
     TurtleUiLib:Destroy()
-    keybindConnection:Disconnect()
+    if keybindConnection then
+        keybindConnection:Disconnect()
+    end
 end
 function library:Keybind(key)
     if keybindConnection then keybindConnection:Disconnect() end

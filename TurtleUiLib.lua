@@ -562,6 +562,7 @@ function library:Window(name)
             end
             Button_2.MouseButton1Up:Connect(function()
                 callback(name)
+		DropdownFrame.Visible = false
             end)
         end
         function dropFunctions:Remove(name)

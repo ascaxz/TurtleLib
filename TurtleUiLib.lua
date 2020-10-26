@@ -89,8 +89,9 @@ function library:Destroy()
 end
 function library:Keybind(key)
     if keybindConnection then keybindConnection:Disconnect() end
-    local key = key:upper()
-
+    if string.len(key) == 1 then
+		key = string.upper(key)
+	end
     keybindConnection = uis.InputBegan:Connect(function(input, gp)
         if not gp and input.KeyCode == Enum.KeyCode[key] then
             TurtleUiLib.Enabled = not TurtleUiLib.Enabled
